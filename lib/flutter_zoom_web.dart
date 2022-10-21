@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:js';
 
 import 'package:crypto/crypto.dart';
@@ -144,18 +145,23 @@ class ZoomViewWeb extends ZoomPlatform {
       /// 1(connecting), 2(connected), 3(disconnected), 4(reconnecting)
       switch (status.meetingStatus) {
         case 1:
+          log('MEETING_STATUS_CONNECTING');
           r[0] = "MEETING_STATUS_CONNECTING";
           break;
         case 2:
+          log('MEETING_STATUS_INMEETING');
           r[0] = "MEETING_STATUS_INMEETING";
           break;
         case 3:
+          log('MEETING_STATUS_DISCONNECTING');
           r[0] = "MEETING_STATUS_DISCONNECTING";
           break;
         case 4:
+          log('MEETING_STATUS_INMEETING');
           r[0] = "MEETING_STATUS_INMEETING";
           break;
         default:
+          log('default ${status.meetingStatus.toString()}');
           r[0] = status.meetingStatus.toString();
           break;
       }
