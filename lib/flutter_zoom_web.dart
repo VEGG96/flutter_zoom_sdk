@@ -141,6 +141,7 @@ class ZoomViewWeb extends ZoomPlatform {
     streamController = StreamController<dynamic>();
     ZoomMtg.inMeetingServiceListener('onMeetingStatus', allowInterop((status) {
       var r = List<String>.filled(2, "");
+      log('${status.meetingStatus}');
 
       /// 1(connecting), 2(connected), 3(disconnected), 4(reconnecting)
       switch (status.meetingStatus) {
